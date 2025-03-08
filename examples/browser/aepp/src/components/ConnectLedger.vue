@@ -39,6 +39,7 @@ export default {
         this.status = 'Waiting for Ledger response';
         const transport = await TransportWebUSB.create();
         this.accountFactory = new AccountLedgerFactory(transport);
+        this.accountFactory._enableExperimentalLedgerAppSupport = true;
       } catch (error) {
         if (error.name === 'TransportOpenUserCancelled') return;
         throw error;
